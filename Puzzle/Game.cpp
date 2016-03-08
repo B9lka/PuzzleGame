@@ -8,9 +8,9 @@
 Game::Game()
 {
 	ResourceManager::GetInstance().AddTexture(L"textures\\pointer.png");
-	//ResourceManager::GetInstance().AddTexture(L"textures\\Delighted by Light II.jpg");
+	ResourceManager::GetInstance().AddTexture(L"textures\\Delighted by Light II.jpg");
 	//ResourceManager::GetInstance().AddTexture(L"textures\\Basket of Love.jpg");
-	ResourceManager::GetInstance().AddTexture(L"textures\\novgorod.jpg");
+	//ResourceManager::GetInstance().AddTexture(L"textures\\novgorod.jpg");
 	ResourceManager::GetInstance().AddTexture(L"textures\\packman.jpg");
 	ResourceManager::GetInstance().AddTexture(L"textures\\youwon.png");
 	ResourceManager::GetInstance().AddTexture(L"textures\\restart.png");
@@ -40,12 +40,12 @@ void Game::Initialize()
 	screenWidth = (float)ScreenRect.right;
 	screenHeight = (float)ScreenRect.bottom;
 	
-	float restartWidth = (float)ScreenRect.right / 7;
+	float restartWidth = (float)ScreenRect.right / 7; 
 	float restartHeight = (float)ScreenRect.bottom / 7;
 	
-	restartButtonScreenCoords.left = screenWidth / 2 - restartWidth;
-	restartButtonScreenCoords.top = screenHeight / 2 - restartHeight;
-	restartButtonScreenCoords.right = (screenWidth + restartWidth) / 4;
+	restartButtonScreenCoords.left = screenWidth / 2 - restartWidth;	
+	restartButtonScreenCoords.top = screenHeight / 2 - restartHeight;	
+	restartButtonScreenCoords.right = (screenWidth + restartWidth) / 4;	
 	restartButtonScreenCoords.bottom = (screenHeight + restartHeight) / 4;
 
 
@@ -97,10 +97,10 @@ void Game::Click(float x, float y)
 {
 	if (IsCompleted())
 	{
-		if (x >= restartButtonScreenCoords.left && x <= restartButtonScreenCoords.right &&
-			y >= restartButtonScreenCoords.top && y <= restartButtonScreenCoords.bottom)
-		{
-			Initialize();
+		if (x >= restartButtonScreenCoords.left && x <= restartButtonScreenCoords.left + restartButtonScreenCoords.right &&
+			y >= restartButtonScreenCoords.top && y <= restartButtonScreenCoords.top + restartButtonScreenCoords.bottom)
+		{																				   
+			Initialize();																   
 		}
 		return;
 	}

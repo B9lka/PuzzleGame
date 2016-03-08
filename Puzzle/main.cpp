@@ -8,14 +8,14 @@
 
 // locking to 30 fps
 const int MS_PER_FRAME = 1000 / 30;
-#define MAX_WINDOW_X 815;
-#define MAX_WINDOW_Y 635;
+const int MAX_WINDOW_WIDTH = 815;
+const int MAX_WINDOW_HEIGHT = 635;
 
 LRESULT WINAPI WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 
 {
-	GDIWorker::Init();
+	GDIWorker::Init(); //Initialization gdi+
 	MSG msg;
 	HWND hwnd;
 	RECT rect;
@@ -35,7 +35,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	wc.lpszClassName = L"GameWindow";
 
 	RegisterClass(&wc);
-//------------------------	
+//--------------------------------
 	GetClientRect(GetDesktopWindow(), &rect);
 
 	hwnd = CreateWindow(
@@ -94,11 +94,11 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 		case WM_GETMINMAXINFO:
 		{
 			LPMINMAXINFO info = (LPMINMAXINFO)lParam;
-			info->ptMaxTrackSize.x = MAX_WINDOW_X;
-			info->ptMaxTrackSize.y = MAX_WINDOW_Y;
+			info->ptMaxTrackSize.x = MAX_WINDOW_WIDTH;
+			info->ptMaxTrackSize.y = MAX_WINDOW_HEIGHT;
 
-			info->ptMinTrackSize.x = MAX_WINDOW_X;
-			info->ptMinTrackSize.y = MAX_WINDOW_Y;
+			info->ptMinTrackSize.x = MAX_WINDOW_WIDTH;
+			info->ptMinTrackSize.y = MAX_WINDOW_HEIGHT;
 
 			return 0;
 		}

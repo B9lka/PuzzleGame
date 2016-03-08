@@ -48,14 +48,14 @@ void GDIWorker::DrawTexture(const Rect& screenCoords, int textureId, const Rect&
 	screenCoordsWrap.Width = screenCoords.right;
 	screenCoordsWrap.Height = screenCoords.bottom;
 	
-	Gdiplus::RectF m_size1;
-	m_size1.Height = textureCoord.bottom;
-	m_size1.X = textureCoord.left;
-	m_size1.Y = textureCoord.top;
-	m_size1.Width = textureCoord.right;
+	Gdiplus::RectF textureCoordsWrap;
+	textureCoordsWrap.Height = textureCoord.bottom;
+	textureCoordsWrap.X = textureCoord.left;
+	textureCoordsWrap.Y = textureCoord.top;
+	textureCoordsWrap.Width = textureCoord.right;
 	//int widthIn = textureCoord.right > textureCoord.bottom ? textureCoord.bottom : textureCoord.right;
 	//m_temp->DrawImage(texture, screenCoordsWrap,((float)widthIn), ((float)widthIn), ((float)widthIn), ((float)widthIn), Gdiplus::UnitPixel);
-	m_temp->DrawImage(texture, screenCoordsWrap, m_size1,Gdiplus::UnitPixel);
+	m_temp->DrawImage(texture, screenCoordsWrap, textureCoordsWrap,Gdiplus::UnitPixel);
 }
 
 void GDIWorker::DrawTexture(const Rect& screenCoords, int textureId)
